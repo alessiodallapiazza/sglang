@@ -75,6 +75,27 @@ def get_chat_template_by_model_path(model_path):
             return template
     return get_chat_template("default")
 
+register_chat_template(
+    ChatTemplate(
+        name="llama-3-instruct",
+        default_system_prompt=None,
+        role_prefix_and_suffix={
+            "system": (
+                "<|start_header_id|>system<|end_header_id|>\n\n",
+                "<|eot_id|>\n",
+            ),
+            "user": (
+                "<|start_header_id|>user<|end_header_id|>\n\n",
+                "<|eot_id|>\n",
+            ),
+            "assistant": (
+                "<|start_header_id|>assistant<|end_header_id|>\n\n",
+                "<|eot_id|>\n",
+            ),
+        },
+        stop_str=("<|eot_id|>",),
+    )
+)
 
 register_chat_template(
     ChatTemplate(
